@@ -43,7 +43,7 @@ Limitations:
  * No built-in nested routes, but can be implemented with simple custom logic. (use startsWith as render condition and parse path to check inner route)
 
 Example:
-```ts
+```tsx
 function App() {
   const route = useCurrentRoute();
   
@@ -66,7 +66,7 @@ function App() {
 
 ## [useGlobalEventListener](./use-global-event.ts)
 
-A React hook that registers an event listener `window` object and cleans it up on unmount.
+A React hook that registers an event listener on `window` and cleans it up on unmount.
 
 Example:
 
