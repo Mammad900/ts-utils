@@ -32,9 +32,8 @@
 }
  */
 
-import React, { HTMLAttributes, MouseEvent, ReactNode } from 'react';
+import { HTMLAttributes, MouseEvent, ReactNode, useEffect } from 'react';
 import createGlobalState from './mini-redux';
-import classNames from 'classnames';
 
 // Global state that holds the current pathname
 const routeStore = createGlobalState<string>(window.location.pathname);
@@ -70,7 +69,7 @@ export function Link({ to, children, className, ...rest }: LinkProps) {
     };
 
     return (
-        <a href={to} onClick={handleClick} className={classNames(className, {active: route.startsWith(to)})} {...rest}>
+        <a href={to} onClick={handleClick} className={(className??'') + (route.startsWith(to) ? " active":"")} {...rest}>
             {children}
         </a>
     );
@@ -81,8 +80,8 @@ window.addEventListener('popstate', () => {
 });
 
 /** Navigates to the given path when rendered. */
-export function Redirect({ to }) {
-    React.useEffect(() => {
+export function Redirect({ to }: {to: string}) {
+    useEffect(() => {
         history.pushState(null, '', to);   // update URL bar
         routeStore.set(to);                // notify the global store
     }, [to]);
