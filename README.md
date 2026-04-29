@@ -28,7 +28,7 @@ function CounterReset() {
 }
 ```
 
-## [Mini React Redux](./mini-react-router.tsx)
+## [Mini React Router](./mini-react-router.tsx)
 
 Minimal router built on top of `mini-redux` (can be found in the same repo)
 
