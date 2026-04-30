@@ -4,24 +4,20 @@
  * @param data An array of objects, each with the same keys as the elements in `columns`
  */
 export default function table<K extends string>(columns: readonly K[], data: Array<Record<K, string>>): string {
-  const maxWidths = columns.map((col) =>
-    Math.max(
-      col.length,
-      ...data.map((item) => item[col].length)
-    )
-  );
+    const maxWidths = columns.map(column => 
+        Math.max(
+            column.length, 
+            ...data.map(item => item[column].length)
+        )
+    );
 
-  // Header row
-  const header = columns.join(' ');
+    const newData = [
+        Object.fromEntries(columns.map(c => [c, c as string])),
+        Object.fromEntries(columns.map((c, i) => [c, '-'.repeat(maxWidths[i])])),
+        ...data
+    ];
 
-  // Separator row (e.g. “--- ---”)
-  const separator = columns
-    .map((_, i) => '-'.repeat(maxWidths[i]))
-    .join(' ');
-
-  const rows = data.map((row) =>
-    columns.map((col, i) => row[col].padEnd(maxWidths[i])).join(' ')
-  );
-
-  return [header, separator, ...rows].join('\n');
+    return newData.map(line =>
+        columns.map((c, i) => line[c].padEnd(maxWidths[i])).join(' ')
+    ).join('\n')
 }
