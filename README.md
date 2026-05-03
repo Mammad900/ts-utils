@@ -52,9 +52,9 @@ function App() {
   return (
     <div>
       <nav>
-        <Link href="/home">Home</Link>
-        <Link href="/profile">Profile</Link>
-        <Link href="/settings">Settings</Link>
+        <Link to="/home">Home</Link>
+        <Link to="/profile">Profile</Link>
+        <Link to="/settings">Settings</Link>
       </nav>
       
       {route === '/home'     ? <HomePage />     :
