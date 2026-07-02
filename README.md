@@ -1,6 +1,6 @@
 # Typescript and React utilities
 
-Use the headings popup at the top right to quickly go over the list of utilities.
+Use the outline button at the top right to quickly go over the list of utilities.
 
 To use one of these, save the file to your project folder, edit as necessary then import it in your code and use it according to the examples. You are not supposed to download the whole repository, and this is not a library.
 
