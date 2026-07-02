@@ -1,5 +1,7 @@
 # Typescript and React utilities
 
+Use the headings popup at the top right to quickly go over the list of utilities.
+
 To use one of these, save the file to your project folder, edit as necessary then import it in your code and use it according to the examples. You are not supposed to download the whole repository, and this is not a library.
 
 ## [Mini Redux](./mini-redux.ts)
@@ -187,3 +189,16 @@ Converts a size (in Bytes) to the biggest suitable base-2 suffix.
 Example: 
  * `prettyFileSize(1024) == '1.00 KiB'`
  * `prettyFileSize(2_234_456) == '2.13 MiB'`
+
+## [Minimal E-Mail validator](./minimal-email-validator.ts)
+
+Lax e-mail validator. Allows many invalid emails, but never denies a valid email.
+This is in contrast to those regexes you see on the internet, which deny many valid addresses.
+
+Example:
+- `validateEmail("something@example.com") == true`
+- `validateEmail("something@localhost") == true` (many validators will deny this valid email)
+- `validateEmail("not a valid email") == false`
+- `validateEmail("@@@@@@@@@@@@") == false`
+- `validateEmail("@") == false`
+- `validateEmail("") == false`
